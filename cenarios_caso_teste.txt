@@ -1,0 +1,69 @@
+Levantamento dos cenários:
+
+1- O usuário deve realizar a autenticação no facebook.
+
+
+CT1 - Todos os campos válidos 
+Descrição: Caso de teste tem como objetivo o usuário realizar a autenticação no facebook e gerar um token de acesso de usuário.
+Pré-condição: Usuário informou e-mail e senha válidos que estão cadastrados no banco de dados.
+Pós-condição: Usuário fez login no facebook e gerou um token de usuário.
+Dados: Email e senha.
+
+CT2 - Usuário não cadastrado no banco de dados
+Descrição: Caso de teste tem como objetivo validar usuários não cadastrados no banco de dados.
+Pré-condição: Usuário informa email e senha que não estão cadastrados no banco de dados.
+Pós-condição: Mensagem de erro que o usuário não foi encontrado no sistema e não gera token de usuário.
+Dados: Email e senha.
+
+CT3 - Usuário informa senha inválida
+Descrição: Esse caso de teste tem como objetivo validar quando o usuário digita senha inválida.
+Pré-condição: O usuário informa email correto e senha inválida.
+Pós-condição: Mensagem de erro que a senha está inválida e pergunta se o usuário esqueceu a senha?
+Dados: Email e senha
+
+CT4 - Usuário deixa os campos de email e senha em branco
+Descrição: Esse caso de teste tem como objetivo validar quando o usuário deixa em branco o email e senha.
+Pré-condição: O usuário não digita email e senha e clica no botão entrar.
+Pós-condição: Mensagem de erro que o usuário não digitou email e se ele gostaria de se cadastrar?
+Dados: Não inserir dados.
+
+CT5 - Verificar a validade do Token de usuário
+Descrição: Esse caso de uso tem como objetivo validar o token de usuário para chama de API para ler, modificar ou gravar os dados do facebook para um usuário especifíco.
+Pré-condição: Usuário já ter feito login e o facebook ter gerado um token válido de acesso ao usuário.
+Pós-condição: O API conseguir fazer modificações no nome do usuário. 
+Dados: token de acesso ao usuário válido.
+
+CT6 - Verificar a validade do Token de usuário inválido
+Descrição: Esse caso de uso tem como objetivo validar o token de usuário inválido para chama de API para ler, modificar ou gravar os dados do facebook para um usuário especifíco.
+Pré-condição: Usuário já ter feito login e o facebook ter gerado um token inválido de acesso ao usuário (já ter expirado).
+Pós-condição: O API não consegue fazer modificações no nome do usuário. 
+Dados: token de acesso ao usuário inválido.
+
+2- O usuário deve postar uma mensagem na página desse mesmo usuário
+
+
+CT7 - Postar uma mensagem na página do próprio usuário
+Descrição: Esse caso de uso tem como objetivo realizar uma postagem do usuário com o token recebido após o login. 
+Pré-condição: O usuário deve ter feito o login, o sistema ter gerado o token de acesso do usuário válido e o usuário ter permissão para postagem.
+Pós-condição: O usuário consegue postar uma mensagem e consegue visualizar essa publicação.
+Dados: mensagem a ser publicada e token de acesso ao usuário válida
+
+CT8 - Validar permissão de postagem do usuário
+Descrição: Esse caso de uso tem como objetivo validar a permissão de uma postagem do usuário. 
+Pré-condição: O usuário deve ter feito o login, o sistema ter gerado o token de acesso do usuário válido e o usuário não ter permissão para postagem na própria linha do tempo.
+Pós-condição: Mensagem de erro que o usuário não tem permissão para postar uma mensagem na página do próprio usuário.
+Dados: mensagem a ser publicada, token de acesso ao usuário válida e retirar a permissão do usuário.
+
+3- Realizar uma alteração do post acima
+
+CT9 - Alterar uma postagem feita pelo usuário
+Descrição: Esse caso de uso tem como objetivo alterar uma postagem feita pelo usuário. 
+Pré-condição: O usuário deve ter feito uma postagem na sua própria página.
+Pós-condição: O facebook altera a mensagem  da postagem do usuário.
+Dados: Mensagem do usuário a ser alterada e token válido
+
+CT10 - Validar permissão de alteração da postagem do usuário na sua própria página
+Descrição: Esse caso de uso tem como objetivo validar a permissão de alteração de uma postagem feita pelo próprio usuário. 
+Pré-condição: O usuário deve ter feito uma postagem na sua própria página e não ter permissão para alteração.
+Pós-condição: Mensagem de erro que o usuário não tem permissão para alteração da postagem já realizada anteriormente.
+Dados: Mensagem do usuário e token válido.
